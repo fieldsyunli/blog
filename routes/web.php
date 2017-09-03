@@ -33,3 +33,6 @@ Route::put('/posts/edit/{post}', 'PostController@update');
 //删除文章
 Route::get('/posts/delete', 'PostController@delete');
 
+//图片上传
+Route::post('/posts/image/upload','PostController@imageUpload');
+

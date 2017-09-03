@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="nav navbar-nav navbar-left">
             <li>
-                <a class="blog-nav-item " href="/posts">首页</a>
+                <a class="blog-nav-item " href="/posts/list">首页</a>
             </li>
             <li>
                 <a class="blog-nav-item" href="/posts/create">写文章</a>

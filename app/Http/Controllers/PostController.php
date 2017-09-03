@@ -32,6 +32,14 @@ class PostController extends Controller
     //创建提交请求
     public function store(){
 
+//        config(['app.locale' => 'zh']); //切换语言包
+
+        #验证
+        $this->validate(\request(),[
+            'title' => 'required|string|max:100|min:5',
+            'content' => 'required|string|min:10',
+        ]);
+
         //第一种提交数据方式
 //        $post = new Post();
 //        $post->title = request('title');
@@ -40,13 +48,15 @@ class PostController extends Controller
 //        dd(\Request::all());
 //        dd(request()->all());
 
+
+        #逻辑
         //第二种提交方式
 //        $params = ['title' =>  \request('title'),'content' => \request('content')];
         $params = \request(['title','content']);
 
         Post::create($params);
 
-//        var_dump($result);
+        #渲染
         return redirect("/posts/list");
 
 
@@ -65,6 +75,15 @@ class PostController extends Controller
     //删除逻辑
     public function delete(){
         return;
+    }
+
+    //图片上传
+    public function imageUpload(Request $request){
+
+        $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
+
+        return asset('storage/'.$path);
+
     }
 
 
