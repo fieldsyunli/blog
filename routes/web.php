@@ -27,11 +27,11 @@ Route::get('/posts/create', 'PostController@create');
 Route::post('/posts/create', 'PostController@store');
 
 //编辑文章
-Route::get('/posts/edit/{post}/', 'PostController@edit');
+Route::get('/posts/edit/{post}', 'PostController@edit');
 Route::put('/posts/edit/{post}', 'PostController@update');
 
 //删除文章
-Route::get('/posts/delete', 'PostController@delete');
+Route::get('/posts/delete/{post}', 'PostController@delete');
 
 //图片上传
 Route::post('/posts/image/upload','PostController@imageUpload');
