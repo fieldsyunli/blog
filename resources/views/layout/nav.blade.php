@@ -2,10 +2,10 @@
     <div class="container">
         <ul class="nav navbar-nav navbar-left">
             <li>
-                <a class="blog-nav-item " href="/posts/list">首页</a>
+                <a class="blog-nav-item " href="{{url('/posts/list')}}">首页</a>
             </li>
             <li>
-                <a class="blog-nav-item" href="/posts/create">写文章</a>
+                <a class="blog-nav-item" href="{{url('/posts/create')}}">写文章</a>
             </li>
             <li>
                 <a class="blog-nav-item" href="/notices">通知</a>
