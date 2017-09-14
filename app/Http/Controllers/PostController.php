@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * Signorance: 自古真情留不住 总是套路得人心
+ * User: 74727
+ * Date: 2017/9/15
+ * Time: 0:00
+ */
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Post;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
 
 class PostController extends Controller
 {
