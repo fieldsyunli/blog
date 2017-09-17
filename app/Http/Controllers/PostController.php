@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Post;
+use Illuminate\Support\Facades\Auth;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 
@@ -67,7 +68,9 @@ class PostController extends Controller
         #逻辑
         //第二种提交方式
 //        $params = ['title' =>  \request('title'),'content' => \request('content')];
-        $params = \request(['title', 'content']);
+
+        $user_id = Auth::id();
+        $params = array_merge(\request(['title', 'content']),compact('user_id'));
 
         Post::create($params);
 
@@ -95,6 +98,8 @@ class PostController extends Controller
             'content' => 'required|string|min:10',
         ]);
 
+        $this->authorize('update',$post);
+
         //逻辑
         $post->title = \request('title');
         $post->content = \request('content');
@@ -110,6 +115,7 @@ class PostController extends Controller
     {
 
         // TODO: 用户权限验证
+        $this->authorize('delete',$post);
 
         $post->delete();
 

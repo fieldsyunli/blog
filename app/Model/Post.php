@@ -12,5 +12,10 @@ class Post extends BaseModel
     protected $table = 'posts';
 
 
+    # 模型关联
+    public function user(){
 
+        return $this->belongsTo('App\Model\User');
+
+    }
 }
