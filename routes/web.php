@@ -56,3 +56,6 @@ Route::get('/posts/delete/{post}', 'PostController@delete');
 //图片上传
 Route::post('/posts/image/upload','PostController@imageUpload');
 
+//发表评论
+Route::post('/posts/{post}/comment','PostController@comment');
+

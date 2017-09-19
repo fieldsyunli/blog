@@ -15,7 +15,7 @@ return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
-    'fetch' => PDO::FETCH_ASSOC, //数据库读取得数据默认位数组
+//    'fetch' => PDO::FETCH_ASSOC, //数据库读取得数据默认位数组
 
     /*
     |--------------------------------------------------------------------------

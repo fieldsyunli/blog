@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Comment;
 use Illuminate\Http\Request;
 use App\Model\Post;
 use Illuminate\Support\Facades\Auth;
@@ -23,17 +24,18 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        $posts = Post::orderBy('created_at', 'desc')->withCount("comments")->paginate(6);
 
         return view("post/index", compact('posts'));
+
     }
 
     //详情页
     public function show(Post $post)
     {
+        $post->load('comments');
 
         return view("post/show", compact('post'));
-
     }
 
     //创建页面
@@ -114,7 +116,6 @@ class PostController extends Controller
     public function delete(Post $post)
     {
 
-        // TODO: 用户权限验证
         $this->authorize('delete',$post);
 
         $post->delete();
@@ -130,6 +131,24 @@ class PostController extends Controller
 
         return asset('storage/' . $path);
 
+    }
+
+    // 提交评论
+    public function comment(Post $post)
+    {
+        // 验证
+        $this->validate(\request(),[
+            'content' => 'required|min:3'
+        ]);
+
+        // 逻辑
+        $comment = new Comment();
+        $comment->user_id = \Auth::id();
+        $comment->content = \request('content');
+        $post->comments()->save($comment);
+
+        //渲染
+        return back();
     }
 
 
