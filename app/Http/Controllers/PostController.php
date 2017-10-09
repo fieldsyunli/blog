@@ -12,6 +12,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Comment;
+use App\Model\Like;
 use Illuminate\Http\Request;
 use App\Model\Post;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::orderBy('created_at', 'desc')->withCount("comments")->paginate(6);
+        $posts = Post::orderBy('created_at', 'desc')->withCount(['comments','likes'])->paginate(6);
 
         return view("post/index", compact('posts'));
 
@@ -148,6 +149,28 @@ class PostController extends Controller
         $post->comments()->save($comment);
 
         //渲染
+        return back();
+    }
+
+    # 赞
+    public function like(Post $post){
+
+        $param = [
+            'user_id' => \Auth::id(),
+            'post_id' => $post->id,
+        ];
+
+        Like::firstOrCreate($param);
+
+        return back();
+
+    }
+
+    # 取消赞
+    public function cancelLike(Post $post){
+
+        $post->like(\Auth::id())->delete();
+
         return back();
     }
 

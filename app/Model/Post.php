@@ -23,4 +23,18 @@ class Post extends BaseModel
     {
         return $this->hasMany('App\Model\Comment');
     }
+
+    // 关联用户
+    public function like($user_id){
+
+        return $this->hasOne('App\Model\Like')->where('user_id',$user_id);
+
+    }
+
+    // 赞数
+    public function likes(){
+        return $this->hasMany('App\Model\Like');
+    }
+
+
 }

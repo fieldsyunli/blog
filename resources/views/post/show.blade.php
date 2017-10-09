@@ -23,8 +23,13 @@
                 {!! $post['content'] !!}
 
                 <div>
-                    <a href="/posts/{{$post['id']}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
+                    @if($post->like(\Auth::id())->exists())
+                        <a href="/posts/cancelLike/{{$post['id']}}" type="button" class="btn btn-default btn-lg">取消赞</a>
+                    @else
+                        <a href="/posts/like/{{$post['id']}}" type="button" class="btn btn-primary btn-lg">赞</a>
+                    @endif
                 </div>
+
             </div>
 
             <div class="panel panel-default">

@@ -59,3 +59,11 @@ Route::post('/posts/image/upload','PostController@imageUpload');
 //发表评论
 Route::post('/posts/{post}/comment','PostController@comment');
 
+//赞
+Route::get('/posts/like/{post}','PostController@like');
+
+//取消赞
+Route::get('/posts/cancelLike/{post}','PostController@cancelLike');
+
+
+
