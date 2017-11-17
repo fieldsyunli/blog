@@ -33,4 +33,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function posts(){
+        return $this->hasMany(\App\Model\Post::class,'user_id','id');
+    }
+
+    public function fans(){
+        return $this->hasMany(\App\Model\Fan::class,'fan_id','id');
+    }
+
+    public function stars(){
+        return $this->hasMany(\App\Model\Fan::class,'star_id','id');
+    }
+
+
+
+
+
+
+
+
 }
