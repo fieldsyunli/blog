@@ -57,7 +57,7 @@ Route::get('/posts/delete/{post}', 'PostController@delete');
 Route::post('/posts/image/upload','PostController@imageUpload');
 
 //发表评论
-Route::post('/posts/{post}/comment','PostController@comment');
+Route::post('/posts/comment/{post}','PostController@comment');
 
 //赞
 Route::get('/posts/like/{post}','PostController@like');

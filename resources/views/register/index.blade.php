@@ -49,7 +49,7 @@
         @include("layout.error")
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
-        <a href="{{'/login'}}" class="btn btn-lg btn-primary btn-block" type="submit">已有账号,去登陆>></a>
+        <a href="{{url('/login')}}" class="btn btn-lg btn-primary btn-block" type="submit">已有账号,去登陆>></a>
     </form>
 
 </div> <!-- /container -->
