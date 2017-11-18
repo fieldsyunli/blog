@@ -55,7 +55,7 @@
 
                 <!-- List group -->
                 <ul class="list-group">
-                    <form action="{{url('/posts/comment',['id'=>$post['id']])}}/" method="post">
+                    <form action="{{url('/posts/comment',['id'=>$post['id']])}}" method="post">
                         {{ csrf_field() }}
                         <li class="list-group-item">
                             <textarea name="content" class="form-control" rows="10"></textarea>
