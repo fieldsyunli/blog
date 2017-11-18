@@ -33,7 +33,7 @@
 
 <div class="container">
 
-    <form class="form-signin" method="POST" action="/register">
+    <form class="form-signin" method="POST" action="{{url('/register')}}">
         {{csrf_field()}}
         <h2 class="form-signin-heading">请注册</h2>
         <label for="name" class="sr-only">名字</label>
@@ -49,7 +49,7 @@
         @include("layout.error")
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
-        <a href="/login" class="btn btn-lg btn-primary btn-block" type="submit">已有账号,去登陆>></a>
+        <a href="{{'/login'}}" class="btn btn-lg btn-primary btn-block" type="submit">已有账号,去登陆>></a>
     </form>
 
 </div> <!-- /container -->
