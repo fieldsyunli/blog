@@ -47,7 +47,7 @@
         </div>
         @include('layout.error')
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
-        <a href="/register" class="btn btn-lg btn-primary btn-block" type="submit">没有账号,去注册>></a>
+        <a href="{{url('/register')}}" class="btn btn-lg btn-primary btn-block" type="submit">没有账号,去注册>></a>
     </form>
 
 </div> <!-- /container -->
