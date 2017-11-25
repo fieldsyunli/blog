@@ -36,7 +36,7 @@
                 @foreach($posts as $post)
                 <div class="blog-post">
                     <h2 class="blog-post-title"><a href="{{url('/posts/detail',['id'=>$post['id']])}}" >{{$post['title']}}</a></h2>
-                    <p class="blog-post-meta">{{$post['created_at']->toFormattedDateString()}}<a href="#"> {{ empty($post['user']['name']) ? 'test' : $post['user']['name'] }}</a></p>
+                    <p class="blog-post-meta">{{$post['created_at']->toFormattedDateString()}}<a href="{{url('/user/'.$post['user']['id'])}}"> {{ empty($post['user']['name']) ? 'test' : $post['user']['name'] }}</a></p>
 
                     {!! str_limit($post['content'],100,'...') !!}
 

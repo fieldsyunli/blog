@@ -23,4 +23,13 @@ class Fan extends BaseModel
         return $this->hasOne(\App\User::class,'id','star_id');
     }
 
+
+
+
+
+
+
+
+
+
 }

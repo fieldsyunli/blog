@@ -35,23 +35,88 @@ class User extends Authenticatable
     ];
 
 
-    public function posts(){
-        return $this->hasMany(\App\Model\Post::class,'user_id','id');
+    /**
+     * 文章列表
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany(\App\Model\Post::class, 'user_id', 'id');
     }
 
-    public function fans(){
-        return $this->hasMany(\App\Model\Fan::class,'fan_id','id');
+    /**
+     * 我的粉丝
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fans()
+    {
+        return $this->hasMany(\App\Model\Fan::class, 'star_id', 'id');
     }
 
-    public function stars(){
-        return $this->hasMany(\App\Model\Fan::class,'star_id','id');
+    /**
+     * 我的关注
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stars()
+    {
+        return $this->hasMany(\App\Model\Fan::class, 'fan_id', 'id');
     }
 
 
+    /**
+     * 关注
+     * @param $uid
+     * @return false|\Illuminate\Database\Eloquent\Model
+     */
+    public function doFan($uid)
+    {
+        $fan = new \App\Model\Fan();
+
+        $fan->star_id = $uid;
+
+        return $this->stars()->save($fan);
+
+    }
+
+    /**
+     * 取消关注
+     * @param $uid
+     * @return mixed
+     */
+    public function doUnFan($uid)
+    {
+        $fan = new \App\Model\Fan();
+
+        $fan->star_id = $uid;
+
+        return $this->stars()->delete($fan);
+
+    }
 
 
+    /**
+     * 当前用户是否有某粉丝
+     * @param $uid
+     * @return int
+     */
+    public function hasFan($uid)
+    {
 
+        return $this->fans()->where('fan_id', $uid)->count();
 
+    }
+
+    /**
+     * 当前用户是否有某个关注
+     * @param $uid
+     * @return int
+     */
+    public function hasStar($uid)
+    {
+
+        return $this->stars()->where('star_id', $uid)->count();
+
+    }
 
 
 }
