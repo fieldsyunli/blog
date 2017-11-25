@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 // 注册页面
 Route::get('/register', 'RegisterController@index');
-、
+
 
 // 注册行为
 Route::post('/register', 'RegisterController@register');
