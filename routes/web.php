@@ -78,6 +78,12 @@ Route::get('/posts/like/{post}', 'PostController@like');
 // 取消赞
 Route::get('/posts/cancelLike/{post}', 'PostController@cancelLike');
 
+// 专题
+Route::get('/topic/{topic}','TopicController@show');
+
+// 专题投稿
+Route::post('/topic/submit/{topic}','TopicController@submit');
+
 
 
 
