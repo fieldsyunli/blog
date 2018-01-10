@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 # 用户模块
@@ -42,9 +42,9 @@ Route::post('user/me/setting', 'UserController@settingStore');
 // 个人中心
 Route::get('/user/{user}', 'UserController@show');
 
-Route::post('/user/fan/{user}', 'UserController@fan');
+Route::post('/user/fan', 'UserController@fan');
 
-Route::post('/user/unFan/{user}', 'UserController@unFan');
+Route::post('/user/unFan', 'UserController@unFan');
 
 
 # 文章模块

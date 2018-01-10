@@ -12,10 +12,15 @@ $('.like-button').click(function (event) {
 
     var current_like = target.attr('like-value');
     var user_id = target.attr('like-user');
+    var unfan_url = "/user/unFan";
+    var fan_url = "/user/fan";
 
     if (current_like == 1) {
         $.ajax({
-            url: '/user/unFan/' + user_id,
+            url: unfan_url,
+            data:{
+                user_id:user_id
+            },
             type: 'POST',
             dataType: 'json',
             success: function (data) {
@@ -31,7 +36,10 @@ $('.like-button').click(function (event) {
         })
     } else {
         $.ajax({
-            url: '/user/fan/' + user_id,
+            url: fan_url,
+            data:{
+                user_id:user_id
+            },
             type: 'POST',
             dataType: 'json',
             success: function (data) {
@@ -40,7 +48,7 @@ $('.like-button').click(function (event) {
                     return;
                 }
 
-                target.attr('like-value', 0);
+                target.attr('like-value', 1);
                 target.text('取消关注');
             }
         })

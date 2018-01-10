@@ -65,12 +65,14 @@ class UserController extends Controller
      * @param User $user
      * @return array
      */
-    public function fan(User $user)
+    public function fan(Request $request)
     {
+
+        $userId = $request->input('user_id');
 
         $me = \Auth::user();
 
-        $me->doFan($user->id);
+        $me->doFan($userId);
 
         return [
             'error' => 0,
@@ -85,12 +87,14 @@ class UserController extends Controller
      * @param User $user
      * @return array
      */
-    public function unFan(User $user)
+    public function unFan(Request $request)
     {
+
+        $userId = $request->input('user_id');
 
         $me = \Auth::user();
 
-        $me->doUnFan($user->id);
+        $me->doUnFan($userId);
 
         return [
             'error' => 0,
