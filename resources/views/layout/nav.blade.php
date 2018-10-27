@@ -8,6 +8,12 @@
                 <a class="blog-nav-item" href="{{url('/posts/create')}}">写文章</a>
             </li>
             <li>
+                <a class="blog-nav-item" href="{{route('gameStoreRecord')}}">战绩录入</a>
+            </li>
+            <li>
+                <a class="blog-nav-item" href="{{route('gameRecordList')}}">战绩列表</a>
+            </li>
+            <li>
                 <a class="blog-nav-item" href="/notices">通知</a>
             </li>
             <li>
@@ -22,7 +28,7 @@
             <li class="dropdown">
                 <div>
                     <img src="/storage/9f0b0809fd136c389c20f949baae3957/iBkvipBCiX6cHitZSdTaXydpen5PBiul7yYCc88O.jpeg" alt="" class="img-rounded" style="border-radius:500px; height: 30px">
-                    <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                    <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@if(Auth::user()){{Auth::user()->name}} @else 4AMGodvzzz @endif <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{url('/user/'.Auth::id())}}">我的主页</a></li>
                         <li><a href="/user/5/setting">个人设置</a></li>

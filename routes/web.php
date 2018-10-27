@@ -84,6 +84,12 @@ Route::get('/topic/{topic}','TopicController@show');
 // 专题投稿
 Route::post('/topic/submit/{topic}','TopicController@submit');
 
+Route::prefix('game')->group(function (){
+    Route::get('record/create','GameController@createRecord')->name('gameStoreRecord');
+    Route::post('record/create','GameController@storeRecord')->name('gameStoreRecord');
+    Route::get('record/list','GameController@recordList')->name('gameRecordList');
+});
+
 
 
 
