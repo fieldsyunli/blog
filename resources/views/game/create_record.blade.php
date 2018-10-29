@@ -103,7 +103,11 @@
                         flag = false;
                         return false;
                     }
-                    kill_data.push($(this).val());
+                    var tmpVal = $(this).val();
+                    if(tmpVal < 0){
+                        tmpVal = 0;
+                    }
+                    kill_data.push(tmpVal);
                 });
                 $(".death").each(function () {
                     if($(this).val() == '' && flag){
@@ -111,7 +115,11 @@
                         flag = false;
                         return false;
                     }
-                    death_data.push($(this).val());
+                    var tmpVal = $(this).val();
+                    if(tmpVal < 0){
+                        tmpVal = 0;
+                    }
+                    death_data.push(tmpVal);
                 });
                 $(".assists").each(function () {
                     if($(this).val() == '' && flag){
@@ -119,7 +127,11 @@
                         flag = false;
                         return false;
                     }
-                    assists_data.push($(this).val());
+                    var tmpVal = $(this).val();
+                    if(tmpVal < 0){
+                        tmpVal = 0;
+                    }
+                    assists_data.push(tmpVal);
                 });
                 $(".out_put_damage").each(function () {
                     if($(this).val() == '' && flag){
@@ -127,7 +139,11 @@
                         flag = false;
                         return false;
                     }
-                    out_put_damage_data.push($(this).val());
+                    var tmpVal = $(this).val();
+                    if(tmpVal < 0){
+                        tmpVal = 0;
+                    }
+                    out_put_damage_data.push(tmpVal);
                 });
                 $(".accept_damage").each(function () {
                     if($(this).val() == '' && flag){
@@ -135,7 +151,11 @@
                         flag = false;
                         return false;
                     }
-                    accept_damage_data.push($(this).val());
+                    var tmpVal = $(this).val();
+                    if(tmpVal < 0){
+                        tmpVal = 0;
+                    }
+                    accept_damage_data.push(tmpVal);
                 });
 
                 if(!flag){
