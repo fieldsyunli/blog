@@ -22,10 +22,9 @@
                     <th colspan="3">
                         <select class="form-control person">
                             <option value="">请选择</option>
-                            <option value="1">阿斗</option>
-                            <option value="2">白眼时代</option>
-                            <option value="3">见习</option>
-                            <option value="4">pikalu</option>
+                            @foreach($player as $key => $value)
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
                         </select>
                     </th>
                 </tr>
@@ -113,15 +112,22 @@
                     alert('请选择选手!');
                     return false;
                 }
+                var games = new Object();
+                var length = kill_data.length;
+                for (var k = 0; k < length; k++) {
+                    var tmpObj = new Object();
+                    tmpObj.kill_data = kill_data[k];
+                    tmpObj.death_data = death_data[k];
+                    tmpObj.assists_data = assists_data[k];
+                    tmpObj.out_put_damage_data = out_put_damage_data[k];
+                    tmpObj.accept_damage_data = accept_damage_data[k];
+                    games[k] = tmpObj;
+                }
 
                 $.ajax({
                     url:"{{$postUrl}}",
                     data:{
-                        kill_data:kill_data,
-                        death_data:death_data,
-                        assists_data:assists_data,
-                        out_put_damage_data:out_put_damage_data,
-                        accept_damage_data:accept_damage_data,
+                        games:games,
                         date:date,
                         person:person
                     },
