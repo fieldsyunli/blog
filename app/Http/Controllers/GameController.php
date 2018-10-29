@@ -11,8 +11,8 @@ class GameController extends Controller
 {
 
     private $player = [
-        1 => '阿斗',
-        2 => '白眼时代',
+        1 => '斗战胜佛',
+        2 => '白银时代',
         3 => '见习',
         4 => 'pikalu',
     ];
