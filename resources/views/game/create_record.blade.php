@@ -90,28 +90,58 @@
                 var assists_data = [];
                 var out_put_damage_data = [];
                 var accept_damage_data = [];
-                $(".kill").each(function () {
-                    kill_data.push($(this).val());
-                });
-                $(".death").each(function () {
-                    death_data.push($(this).val());
-                });
-                $(".assists").each(function () {
-                    assists_data.push($(this).val());
-                });
-                $(".out_put_damage").each(function () {
-                    out_put_damage_data.push($(this).val());
-                });
-                $(".accept_damage").each(function () {
-                    accept_damage_data.push($(this).val());
-                });
-
                 var date = $('.J_date').val();
                 var person = $('.person option:selected').val();
+                var flag = true;
                 if(person == ''){
                     alert('请选择选手!');
                     return false;
                 }
+                $(".kill").each(function () {
+                    if($(this).val() == '' && flag){
+                        alert('瑞了吗？请填写击杀数');
+                        flag = false;
+                        return false;
+                    }
+                    kill_data.push($(this).val());
+                });
+                $(".death").each(function () {
+                    if($(this).val() == '' && flag){
+                        alert('瑞了吗？请填写死亡数');
+                        flag = false;
+                        return false;
+                    }
+                    death_data.push($(this).val());
+                });
+                $(".assists").each(function () {
+                    if($(this).val() == '' && flag){
+                        alert('瑞了吗？请填写助攻数');
+                        flag = false;
+                        return false;
+                    }
+                    assists_data.push($(this).val());
+                });
+                $(".out_put_damage").each(function () {
+                    if($(this).val() == '' && flag){
+                        alert('瑞了吗？请填写输出伤害量');
+                        flag = false;
+                        return false;
+                    }
+                    out_put_damage_data.push($(this).val());
+                });
+                $(".accept_damage").each(function () {
+                    if($(this).val() == '' && flag){
+                        alert('瑞了吗？请填写承受伤害量');
+                        flag = false;
+                        return false;
+                    }
+                    accept_damage_data.push($(this).val());
+                });
+
+                if(!flag){
+                    return false;
+                }
+
                 var games = new Object();
                 var length = kill_data.length;
                 for (var k = 0; k < length; k++) {
@@ -123,7 +153,6 @@
                     tmpObj.accept_damage_data = accept_damage_data[k];
                     games[k] = tmpObj;
                 }
-
                 $.ajax({
                     url:"{{$postUrl}}",
                     data:{
