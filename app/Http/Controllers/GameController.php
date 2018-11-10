@@ -15,6 +15,8 @@ class GameController extends Controller
         2 => '白银时代',
         3 => '见习',
         4 => 'pikalu',
+        5 => '陈老师',
+        6 => '张老师',
     ];
 
     private $prefixUrl = 'http://47.97.194.118:8080/lol/api/v1/';
